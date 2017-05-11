@@ -12,7 +12,7 @@ public class Main
         JFrame obj = new JFrame();
         Gameplay gameplay = new Gameplay();
         obj.setBounds(10, 10, 700, 600);
-        obj.setTitle("Alvin Lo (But that's pretty gay though)");
+        obj.setTitle("Bochi Yan :D");
         obj.setResizable(false);
         obj.setVisible(true);
         obj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
