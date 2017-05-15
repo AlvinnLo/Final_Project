@@ -55,9 +55,17 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
 
     public void paint(Graphics g)
     {
+<<<<<<< HEAD
         //backgrounds
         g.setColor(Color.black);
         g.fillRect(1,1, 692, 592);
+=======
+       //backgrounds
+        g.setColor(Color.black);
+        g.fillRect(1,1, 692, 592);
+
+
+>>>>>>> origin/master
         map.draw((Graphics2D)g);
 
         //billy herrington image
@@ -79,6 +87,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
 
         //directions
         g.setColor(Color.white);
+<<<<<<< HEAD
         g.setFont(new Font("serif", Font.BOLD, 15));
         g.drawString("Controls: A for left and D for Right For Blue Paddle", 15, 25);
         g.setFont(new Font("serif", Font.BOLD, 15));
@@ -87,6 +96,12 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
         g.drawString("Paddles don't work when they intersect.", 15, 500);
         g.setFont(new Font("serif", Font.BOLD, 15));
         g.drawString("Or tap Q to win immediately...", 255, 150);
+=======
+        g.setFont(new Font("serif", Font.BOLD, 22));
+        g.drawString("Controls: A for left and D for Right", 15, 30);
+        g.setFont(new Font("serif", Font.BOLD, 12));
+        g.drawString("Or tap W to win immediately...", 15, 40);
+>>>>>>> origin/master
 
         // the paddle
         g.setColor(Color.blue);
@@ -123,6 +138,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
             ballXdir = 0;
             ballYdir = 0;
             g.setColor(Color.RED);
+<<<<<<< HEAD
 
             if(score<60){
                 g.setFont(new Font("serif", Font.BOLD, 50));
@@ -133,6 +149,10 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
                 g.setFont(new Font("serif", Font.BOLD, 30));
                 g.drawString("You like embarrassing me huh?", 140, 300);
             }
+=======
+            g.setFont(new Font("serif", Font.BOLD, 30));
+            g.drawString("You like embarrassing me huh?", 140, 300);
+>>>>>>> origin/master
 
             g.setFont(new Font("serif", Font.BOLD, 30));
             g.drawString("Score:" + score, 270, 350);
@@ -244,6 +264,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
                 moveLeft();
             }
         }
+<<<<<<< HEAD
 
         if(e.getKeyCode() == KeyEvent.VK_W)
         {
@@ -274,6 +295,12 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
             destroyer();
         }
 
+=======
+        if(e.getKeyCode() == KeyEvent.VK_W)
+        {
+            destroyer();
+        }
+>>>>>>> origin/master
         if(e.getKeyCode() == KeyEvent.VK_ENTER){
             if(!play){
                 play = true;
