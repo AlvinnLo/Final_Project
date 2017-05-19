@@ -13,7 +13,7 @@ public class Main
         Gameplay gameplay = new Gameplay();
         obj.setBounds(10, 10, 700, 600);
 
-        obj.setTitle("No Bochi No Life (Free Version)");
+        obj.setTitle("Alvin Lo (But that's pretty gay though)");
 
         obj.setResizable(false);
         obj.setVisible(true);

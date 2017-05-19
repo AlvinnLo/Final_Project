@@ -60,10 +60,6 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
         g.setColor(Color.black);
         g.fillRect(1,1, 692, 592);
 
-       //backgrounds
-        g.setColor(Color.black);
-        g.fillRect(1,1, 692, 592);
-
         map.draw((Graphics2D)g);
 
         //billy herrington image
@@ -89,13 +85,12 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
         g.setFont(new Font("serif", Font.BOLD, 15));
         g.drawString("Controls: A for left and D for Right For Blue Paddle", 15, 25);
         g.setFont(new Font("serif", Font.BOLD, 15));
-        g.drawString("                Left Arrow for left and Right Arrow for Right For Green Paddle", 15, 40);
-
+        g.drawString("                LEFT for left and RIGHT for Right For Green Paddle", 15, 40);
         g.setFont(new Font("serif", Font.BOLD, 15));
         g.drawString("Paddles don't work when they intersect.", 15, 500);
-
         g.setFont(new Font("serif", Font.BOLD, 15));
-        g.drawString("Or tap Q to win immediately...", 15, 530);
+        g.drawString("Or tap Q to win immediately...", 15, 485);
+
 
         // the paddle
         g.setColor(Color.blue);
@@ -105,6 +100,10 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
         g.setColor(Color.green);
         g.fillRect(playerY, 550, 100, 8);
 
+        // the ball 1
+        g.setColor(Color.yellow);
+        g.fillOval(ballposX, ballposY, 20, 20);
+
         // the ball 2
         g.setColor(Color.pink);
         g.fillOval(ballposX, ballposY, 20, 20);
@@ -113,35 +112,32 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
             play = false;
             ballXdir = 0;
             ballYdir = 0;
-            g.setColor(Color.red);
+            g.setColor(Color.RED);
             g.setFont(new Font("serif", Font.BOLD, 30));
-            g.drawString("You won: ", 270, 290);
+            g.drawString("You won: ", 260, 300);
 
             g.setFont(new Font("serif", Font.BOLD, 20));
-            g.drawString("Press Enter to Restart ", 230, 320);
-
-            g.setColor(Color.yellow);
-            g.setFont(new Font("serif", Font.BOLD, 20));
-            g.drawString("Purchase Full Version for $6.99 ", 210, 350);
+            g.drawString("Press Enter to Restart ", 230, 350);
         }
+
 
 
         if(ballposY > 570){
             play = false;
             ballXdir = 0;
             ballYdir = 0;
-            g.setColor(Color.red);
-
+            g.setColor(Color.RED);
 
             if(score<60){
                 g.setFont(new Font("serif", Font.BOLD, 50));
                 g.drawString("Trash !!!!", 240, 300);
             }
 
-            if(score>=60){
+            if(score>60){
                 g.setFont(new Font("serif", Font.BOLD, 30));
                 g.drawString("You like embarrassing me huh?", 140, 300);
             }
+
 
             g.setFont(new Font("serif", Font.BOLD, 30));
             g.drawString("Score:" + score, 270, 350);
@@ -227,9 +223,10 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
 
     public void keyReleased(KeyEvent e) {}
 
+
     public void keyPressed(KeyEvent e)
     {
-        if(e.getKeyCode() == KeyEvent.VK_RIGHT)
+        if(e.getKeyCode() == KeyEvent.VK_D)
         {
             if(playerX >= 600)
             {
@@ -241,7 +238,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
             }
         }
 
-        if(e.getKeyCode() == KeyEvent.VK_LEFT)
+        if(e.getKeyCode() == KeyEvent.VK_A)
         {
             if(playerX < 10)
             {
@@ -253,8 +250,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
             }
         }
 
-
-        if(e.getKeyCode() == KeyEvent.VK_D)
+        if(e.getKeyCode() == KeyEvent.VK_RIGHT)
         {
             if(playerY >= 600)
             {
@@ -266,7 +262,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
             }
         }
 
-        if(e.getKeyCode() == KeyEvent.VK_A)
+        if(e.getKeyCode() == KeyEvent.VK_LEFT)
         {
             if(playerY < 10)
             {
