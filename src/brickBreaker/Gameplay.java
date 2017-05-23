@@ -15,6 +15,9 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import java.io.*;
+import javax.sound.sampled.*;
+
 
 /**
  * Created by loc8537 on 5/5/2017.
@@ -138,6 +141,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
             g.setFont(new Font("serif", Font.BOLD, 20));
             g.drawString("Purchase Full Version for $6.99 ", 210, 410);
         }
+
 
 
         if(ballposY > 570){
