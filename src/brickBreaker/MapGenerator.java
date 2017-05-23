@@ -35,12 +35,7 @@ public class MapGenerator {
             }
         }
     }
-<<<<<<< HEAD
     public void setBrickValue(int value, int row, int col){
-=======
-    public void setBrickValue(int value, int row, int col)
-    {
->>>>>>> origin/master
         map[row][col] = value;
     }
 }
