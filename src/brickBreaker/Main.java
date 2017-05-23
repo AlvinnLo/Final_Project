@@ -12,9 +12,7 @@ public class Main
         JFrame obj = new JFrame();
         Gameplay gameplay = new Gameplay();
         obj.setBounds(10, 10, 700, 600);
-
-        obj.setTitle("No Bochi No Life (Free Version)");
-
+        obj.setTitle("Bochi Yan :D");
         obj.setResizable(false);
         obj.setVisible(true);
         obj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
