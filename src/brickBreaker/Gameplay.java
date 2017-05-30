@@ -15,6 +15,9 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import java.io.*;
+import javax.sound.sampled.*;
+
 
 /**
  * Created by loc8537 on 5/5/2017.
@@ -36,10 +39,20 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
     private int playerY = 200;
     //starting position for the slide
 
+    //pink ball
     private int ballposX = 120;
     private int ballposY = 350;
+    //ball2
+    private int ballposA = 420;
+    private int ballposB = 350;
+
+    //pink ball
     private int ballXdir = -1;
     private int ballYdir = -2;
+
+    //ball 2
+    private int ballAdir = -1;
+    private int ballBdir = -2;
 
     private MapGenerator map;
 
@@ -55,11 +68,6 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
 
     public void paint(Graphics g)
     {
-
-        //backgrounds
-        g.setColor(Color.black);
-        g.fillRect(1,1, 692, 592);
-
         //backgrounds
         g.setColor(Color.black);
         g.fillRect(1,1, 692, 592);
@@ -99,14 +107,20 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
         g.setColor(Color.green);
         g.fillRect(playerY, 550, 100, 8);
 
-        // the ball 2
+        // pink ball
         g.setColor(Color.pink);
         g.fillOval(ballposX, ballposY, 20, 20);
+
+        // ball 2
+        g.setColor(Color.cyan);
+        g.fillOval(ballposA, ballposB, 20, 20);
 
         if(totalBricks <= 0){
             play = false;
             ballXdir = 0;
             ballYdir = 0;
+            ballAdir = 0;
+            ballBdir = 0;
 
             //billy herrington image
             jl.setIcon(new ImageIcon("billy.jpg"));
@@ -140,12 +154,15 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
         }
 
 
-        if(ballposY > 570){
+
+        if(ballposY > 570 || ballposB >570){
             play = false;
             ballXdir = 0;
             ballYdir = 0;
-            g.setColor(Color.red);
+            ballAdir = 0;
+            ballBdir = 0;
 
+            g.setColor(Color.red);
 
             if(score<60){
                 g.setFont(new Font("serif", Font.BOLD, 50));
@@ -180,9 +197,19 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
                 ballYdir = -ballYdir;
             }
 
+            if(new Rectangle(ballposA, ballposB, 20, 20).intersects(new Rectangle(playerX, 550, 100, 8)))
+            {
+                ballBdir = -ballBdir;
+            }
+
             if(new Rectangle(ballposX, ballposY, 20, 20).intersects(new Rectangle(playerY, 550, 100, 8)))
             {
                 ballYdir = -ballYdir;
+            }
+
+            if(new Rectangle(ballposA, ballposB, 20, 20).intersects(new Rectangle(playerY, 550, 100, 8)))
+            {
+                ballBdir = -ballBdir;
             }
 
             A: for(int i = 0; i<map.map.length; i++){
@@ -195,9 +222,11 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
 
                         Rectangle rect = new Rectangle(brickX, brickY, brickWidth, brickHeight);
                         Rectangle ballRect = new Rectangle(ballposX, ballposY, 20, 20);
+                        Rectangle ballReect = new Rectangle(ballposA, ballposB, 20, 20);
                         Rectangle brickRect = rect;
+                        Rectangle brickReect = rect;
 
-                        if(ballRect.intersects(brickRect)){
+                        if(ballRect.intersects(brickRect)||ballReect.intersects(brickReect)){
                             map.setBrickValue(0, i, j);
                             totalBricks--;
                             score += 5;
@@ -207,14 +236,26 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
                             } else{
                                 ballYdir = -ballYdir;
                             }
+
+                            if(ballposA + 19 <= brickReect.x || ballposA + 1 >= brickReect.x + brickReect.width){
+                                ballAdir = -ballXdir;
+                            } else{
+                                ballBdir = -ballYdir;
+                            }
                             break A;
                         }
+
                     }
                 }
             }
 
             ballposX += ballXdir;
             ballposY += ballYdir;
+
+            ballposA += ballAdir;
+            ballposB += ballBdir;
+
+            //pink ball
             //left
             if(ballposX < 0)
             {
@@ -230,6 +271,24 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
             {
                 ballXdir = -ballXdir;
             }
+
+            //cyan ball
+            //left
+            if(ballposA < 0)
+            {
+                ballAdir = -ballAdir;
+            }
+            //top
+            if(ballposB < 0)
+            {
+                ballBdir = -ballBdir;
+            }
+            //right
+            if(ballposA > 670)
+            {
+                ballAdir = -ballAdir;
+            }
+
         }
 
         //so the panel can move
@@ -303,8 +362,12 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
                 play = true;
                 ballposX = 120;
                 ballposY = 350;
+                ballposA = 420;
+                ballposB = 350;
                 ballXdir =  -1;
                 ballYdir = -2;
+                ballAdir =  -1;
+                ballBdir = -2;
                 playerX = 310;
                 score = 0;
                 totalBricks = 35;
@@ -324,6 +387,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
                 score = 175;
             }
         }
+
 
 
     }

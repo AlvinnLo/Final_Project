@@ -12,10 +12,11 @@ public class Main
         JFrame obj = new JFrame();
         Gameplay gameplay = new Gameplay();
         obj.setBounds(10, 10, 700, 600);
-        obj.setTitle("Bochi Yan :D");
+        obj.setTitle("Alvin Lo's (dark) fantasy ");
         obj.setResizable(false);
         obj.setVisible(true);
         obj.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         obj.add(gameplay);
+        Soundeffect soundeffect = new Soundeffect();
     }
 }
