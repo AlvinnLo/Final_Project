@@ -9,7 +9,7 @@ class Background extends JFrame
     public Background()
     {
         setTitle("Background");
-        setSize(400,400);
+        setSize(592,592);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
