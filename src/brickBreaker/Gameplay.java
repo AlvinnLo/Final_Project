@@ -243,6 +243,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
                             map.setBrickValue(0, i, j);
                             totalBricks--;
                             score += 5;
+                            //hit Hit = new hit();
+
 
                             if(ballposX + 19 <= brickRect.x || ballposX + 1 >= brickRect.x + brickRect.width){
                                 ballXdir = -ballXdir;
@@ -256,6 +258,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
                                 ballBdir = -ballYdir;
                             }
                             break A;
+
                         }
 
                     }
