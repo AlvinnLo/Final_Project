@@ -39,9 +39,13 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
     private int playerY = 200;
     //starting position for the slide
 
+    private int start1 = 1 + (int)((Math.random()*600));
+    private int start2 = 1 + (int)((Math.random()*600));
+
     //pink ball
     private int ballposX = 120;
     private int ballposY = 350;
+
     //ball2
     private int ballposA = 420;
     private int ballposB = 350;
@@ -115,6 +119,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
         g.setColor(Color.cyan);
         g.fillOval(ballposA, ballposB, 20, 20);
 
+
         if(totalBricks <= 0){
             play = false;
             ballXdir = 0;
@@ -150,7 +155,8 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
 
             g.setColor(Color.yellow);
             g.setFont(new Font("serif", Font.BOLD, 20));
-            g.drawString("Purchase Full Version for $6.99 ", 210, 410);
+            g.drawString("You gave me quite a show ", 220, 410);
+
         }
 
 
@@ -166,24 +172,31 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener
 
             if(score<60){
                 g.setFont(new Font("serif", Font.BOLD, 50));
-                g.drawString("Trash !!!!", 240, 300);
+                g.drawString("As We Can", 220, 300);
+                g.setFont(new Font("serif", Font.BOLD, 30));
+                g.drawString("Score:" + score, 270, 350);
+
+                g.setFont(new Font("serif", Font.BOLD, 20));
+                g.drawString("Press Enter to Restart ", 230, 400);
+                awcsound awcsound = new awcsound();
             }
 
             if(score>=60){
                 g.setFont(new Font("serif", Font.BOLD, 30));
                 g.drawString("You like embarrassing me huh?", 140, 300);
+                g.setFont(new Font("serif", Font.BOLD, 30));
+                g.drawString("Score:" + score, 270, 350);
+
+                g.setFont(new Font("serif", Font.BOLD, 20));
+                g.drawString("Press Enter to Restart ", 230, 400);
+                lemsound lemsound = new lemsound();
             }
-
-            g.setFont(new Font("serif", Font.BOLD, 30));
-            g.drawString("Score:" + score, 270, 350);
-
-            g.setFont(new Font("serif", Font.BOLD, 20));
-            g.drawString("Press Enter to Restart ", 230, 400);
 
         }
 
 
         g.dispose();
+
 
     }
 
